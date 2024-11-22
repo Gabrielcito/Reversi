@@ -1,0 +1,12 @@
+.player img {
+    width: 100px; /* Tamaño de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 50%; /* Hace la imagen circular (opcional) */
+    border: 2px solid #000; /* Borde para destacar (opcional) */
+}
+
+.player p {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
