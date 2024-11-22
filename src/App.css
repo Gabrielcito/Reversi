@@ -1,0 +1,47 @@
+#game-container {
+  max-width: 50rem;
+  margin: 3rem auto;
+  padding: 4rem;
+  border-radius: 6px;
+  background: linear-gradient(#000034, #000034a3);
+  box-shadow:
+    -5px 0 15px rgba(255, 0, 255, 0.5),
+    0 -5px 15px rgba(255, 0, 255, 0.5),
+    5px 0 15px rgba(241, 112, 12, 0.5),
+    0 5px 15px rgba(241, 112, 12, 0.5);
+  position: relative;
+}
+
+#main-container {
+  display: flex;
+  justify-content: space-between; /* Asegura que las tres secciones se distribuyan */
+  align-items: center; /* Centra las secciones verticalmente */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  padding: 0 2rem; /* Añade algo de espacio lateral */
+}
+
+/* Sección izquierda */
+.left {
+  width: 20%; /* Ocupa el 20% de la pantalla */
+  display: flex;
+  justify-content: center; /* Centra al jugador horizontalmente */
+  flex-direction: column; /* Alinea el nombre y la imagen del jugador verticalmente */
+  align-items: center; /* Centra el contenido dentro */
+}
+
+/* Sección central (tablero) */
+.center {
+  width: 60%; /* Ocupa el 60% de la pantalla */
+  display: flex;
+  justify-content: center; /* Centra el tablero horizontalmente */
+  align-items: center; /* Centra el tablero verticalmente */
+}
+
+/* Sección derecha */
+.right {
+  width: 20%; /* Ocupa el 20% de la pantalla */
+  display: flex;
+  justify-content: center; /* Centra al jugador horizontalmente */
+  flex-direction: column; /* Alinea el nombre y la imagen del jugador verticalmente */
+  align-items: center; /* Centra el contenido dentro */
+}
