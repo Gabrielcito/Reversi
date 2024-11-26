@@ -25,3 +25,9 @@
         0 5px 15px rgba(241, 112, 12, 0.5);
     animation: pulse-text 1.5s infinite ease-in-out;
 }
+
+#turn-placeholder {
+    color: white; /* Texto blanco */
+    font-size: 2rem; /* Aumenta el tamaño del texto */
+    text-align: center; /* Alineación del texto si hay varias líneas */
+}

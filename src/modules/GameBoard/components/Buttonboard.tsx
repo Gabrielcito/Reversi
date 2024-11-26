@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import '../styles/Buttonboard.css'
+import { ButtonboardProps } from '../types/Buttonboard';
 
-function Buttonboard() {
+const Buttonboard: React.FC<ButtonboardProps> = ({clickFunction}) => {
 
     const backgroundButtonColor: string[] = ["initial", "red", "blue"];
 
@@ -9,6 +10,7 @@ function Buttonboard() {
 
     const changePiece = () => {
         setColorIndex((colorIndex + 1) % backgroundButtonColor.length);
+        clickFunction();
     };
 
 
@@ -16,9 +18,9 @@ function Buttonboard() {
     return (
         <>
             <button 
-            id="buttonBoard"
-            onClick={() => changePiece()}
-            style={{backgroundColor: backgroundButtonColor[colorIndex]}}
+                id="buttonBoard"
+                onClick={() => changePiece()}
+                style={{backgroundColor: backgroundButtonColor[colorIndex]}}
             >
 
             </button>
