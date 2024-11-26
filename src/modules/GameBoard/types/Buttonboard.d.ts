@@ -1,3 +1,5 @@
 export interface ButtonboardProps {
-    clickFunction: () => void;
+    onTurnEnd: () => void,
+    initialColor,
+    currentPlayer
 }

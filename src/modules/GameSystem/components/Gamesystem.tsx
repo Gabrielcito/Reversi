@@ -9,11 +9,11 @@ const GameSystem: React.FC<GameSystemProps> = ({ children }) => {
     useEffect(() => {
         const storedPlayer = localStorage.getItem('currentPlayer');
 
-        setCurrentPlayer(storedPlayer ?? 'Player 1');
+        setCurrentPlayer(storedPlayer ?? 'Jugador 1');
     }, []);
 
     const handleTurnChange = () => {
-        const nextPlayer = currentPlayer === 'Player 1' ? 'Player 2' : 'Player 1';
+        const nextPlayer = currentPlayer === 'Jugador 1' ? 'Jugador 2' : 'Jugador 1';
         console.log(nextPlayer)
         setCurrentPlayer(nextPlayer);
         localStorage.setItem('currentPlayer', nextPlayer);

@@ -18,6 +18,7 @@ function App() {
                 playerNumber={1}
                 name="Jugador 1"
                 image={TUKI}
+                color="🔴"
               />
             </div>
       
@@ -35,6 +36,7 @@ function App() {
                 playerNumber={2}
                 name="Jugador 2"
                 image={TUKI}
+                color="🔵"
               />
             </div>
             

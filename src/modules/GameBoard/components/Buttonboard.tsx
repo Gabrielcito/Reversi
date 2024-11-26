@@ -2,18 +2,26 @@ import { useState } from 'react';
 import '../styles/Buttonboard.css'
 import { ButtonboardProps } from '../types/Buttonboard';
 
-const Buttonboard: React.FC<ButtonboardProps> = ({clickFunction}) => {
+const Buttonboard: React.FC<ButtonboardProps> = ({onTurnEnd, currentPlayer, initialColor = "initial"}) => {
 
     const backgroundButtonColor: string[] = ["initial", "red", "blue"];
 
-    const [colorIndex, setColorIndex] = useState(0);
+    const initialIndex = backgroundButtonColor.indexOf(initialColor);
+    const [colorIndex, setColorIndex] = useState<number>(initialIndex >= 0 ? initialIndex : 0);
 
     const changePiece = () => {
-        setColorIndex((colorIndex + 1) % backgroundButtonColor.length);
-        clickFunction();
+
+        const playerPieceColor: Record<string, number> = {
+            'Jugador 1': 1,
+            'Jugador 2': 2
+        }
+
+        setColorIndex(playerPieceColor[currentPlayer]);
+
+        
+        //setColorIndex((colorIndex + 1) % backgroundButtonColor.length);
+        onTurnEnd();
     };
-
-
 
     return (
         <>
