@@ -2,7 +2,7 @@ import '../styles/Gameboard.css'
 import { BoardType, GameBoardProps } from '../types/Gameboard';
 import Buttonboard from '../components/Buttonboard'
 
-const BOARD = Array(8)
+const BOARD: BoardType = Array(8)
   .fill(null)
   .map((_, rowIndex) =>
     Array(8).fill(null).map((_, colIndex) => {
