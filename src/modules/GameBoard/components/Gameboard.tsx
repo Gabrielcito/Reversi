@@ -19,7 +19,7 @@ const Board: React.FC<GameBoardProps> = ({currentPlayer, onTurnEnd}) => {
         {BOARD.map((row, rowIndex) => 
           <li key={rowIndex}>
             <ol>
-              {row.map((col, colIndex) => <li><Buttonboard clickFunction={onTurnEnd}/></li>)}
+              {row.map(() => <li><Buttonboard clickFunction={onTurnEnd}/></li>)}
             </ol>
           </li>)}
       </ol>
