@@ -19,6 +19,7 @@ const App = () => {
                 name="Jugador 1"
                 image={TUKI}
                 color="🔴"
+                isCurrentPlayer={currentPlayer === 'Jugador 1'}
               />
             </div>
       
@@ -38,6 +39,7 @@ const App = () => {
                 name="Jugador 2"
                 image={TUKI}
                 color="🔵"
+                isCurrentPlayer={currentPlayer === 'Jugador 2'}
               />
             </div>
             

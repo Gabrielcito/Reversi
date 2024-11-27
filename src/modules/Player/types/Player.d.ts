@@ -3,4 +3,5 @@ export interface PlayerProps {
     name: string; 
     image: string; 
     color: string;
+    isCurrentPlayer: boolean;
 }
