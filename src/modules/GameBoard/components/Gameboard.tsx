@@ -19,7 +19,7 @@ const Board: React.FC<GameBoardProps> = ({currentPlayer, BOARD, onTurnEnd}) => {
                     onTurnEnd={onTurnEnd} 
                     color={color} 
                     row={rowIndex}
-                    coll={colIndex}
+                    col={colIndex}
                     />
                 </li>
               ))}

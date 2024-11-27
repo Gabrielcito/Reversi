@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { GameSystemProps, BoardType } from '../types/Gamesystem';
+import { flipValidPieces } from '../util/FlipSystem';
 
 const initialBoard: BoardType = Array(8)
     .fill(null)
@@ -21,15 +22,8 @@ const initialBoard: BoardType = Array(8)
 const GameSystem: React.FC<GameSystemProps> = ({ children }) => {
 
     const [board, setBoard] = useState<BoardType>(initialBoard);
+    //const [lastMove, setLastMove] = useState<{ row: number; col: number }>({ row: 0, col: 0});
     const [currentPlayer, setCurrentPlayer] = useState<string>('Jugador 1');
-
-
-    // TODO: Logica principal del juego
-    useEffect(() => {
-        console.log('Cambio el tablero')
-    }, [board]);
-
-    
 
     const handleTurnChangeAndBoardState = (rowIndex: number, colIndex: number) => {
 
@@ -37,20 +31,9 @@ const GameSystem: React.FC<GameSystemProps> = ({ children }) => {
             return; 
         }
 
-        const playerColors: Record<string, string> = {
-            'Jugador 1': '0',
-            'Jugador 2': '1',
-        };
+        const flippedBoard = flipValidPieces(board, rowIndex, colIndex, currentPlayer);
 
-        // TODO: Quitar este ignore
-        // @ts-ignore
-        const newBoard: BoardType = board.map((row, rIndex) =>
-            row.map((cell, cellIndex) =>
-                rIndex === rowIndex && cellIndex === colIndex ? playerColors[currentPlayer] : cell
-            )
-        );
-
-        setBoard(newBoard);
+        setBoard(flippedBoard)
 
         const nextPlayer = currentPlayer === 'Jugador 1' ? 'Jugador 2' : 'Jugador 1';
         setCurrentPlayer(nextPlayer);
