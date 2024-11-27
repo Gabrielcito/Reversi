@@ -8,7 +8,6 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "push": "git add . && git commit -m \"$MESSAGE\" && git push Reversi development"
   },
   "dependencies": {
     "react": "^18.3.1",
