@@ -1,5 +1,6 @@
 export interface ButtonboardProps {
-    onTurnEnd: () => void,
-    initialColor,
-    currentPlayer
+    onTurnEnd: (rowIndex: number, colIndex: number) => void,
+    color,
+    row,
+    coll
 }

@@ -1,30 +1,8 @@
 import '../styles/Gameboard.css'
-import { BoardType, GameBoardProps } from '../types/Gameboard';
+import { GameBoardProps } from '../types/Gameboard';
 import Buttonboard from '../components/Buttonboard'
 
-const BOARD: BoardType = Array(8)
-  .fill(null)
-  .map((_, rowIndex) =>
-    Array(8).fill(null).map((_, colIndex) => {
-      if (
-        (rowIndex === 3 && colIndex === 3) || // Centro arriba-izquierda
-        (rowIndex === 4 && colIndex === 4)    // Centro abajo-derecha
-      ) {
-        return "red";
-      }
-
-      if (
-        (rowIndex === 3 && colIndex === 4) || // Centro arriba-derecha
-        (rowIndex === 4 && colIndex === 3)  // Centro abajo-izquierda
-      ) {
-        return "blue";
-      }
-
-      return null; // Resto de las celdas vacías
-    })
-  );
-
-const Board: React.FC<GameBoardProps> = ({currentPlayer, onTurnEnd}) => { 
+const Board: React.FC<GameBoardProps> = ({currentPlayer, BOARD, onTurnEnd}) => { 
 
   return (
     <>
@@ -39,9 +17,9 @@ const Board: React.FC<GameBoardProps> = ({currentPlayer, onTurnEnd}) => {
                 <li key={colIndex}>
                   <Buttonboard 
                     onTurnEnd={onTurnEnd} 
-                    initialColor={color} 
-                    currentPlayer={currentPlayer}
-                    
+                    color={color} 
+                    row={rowIndex}
+                    coll={colIndex}
                     />
                 </li>
               ))}

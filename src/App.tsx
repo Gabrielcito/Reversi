@@ -4,13 +4,13 @@ import Player from './modules/Player/components/Player'
 import TUKI from '../src/modules/Player/assets/TUKI.webp'
 import GameSystem from './modules/GameSystem/components/Gamesystem'
 
-function App() {
+const App = () => {
 
   return (
 
     <GameSystem>
 
-      {({ currentPlayer, handleTurnChange }) => (
+      {({ currentPlayer, board, handleTurnChangeAndBoardState }) => (
           <div id="main-container">
 
             <div className="left">
@@ -26,7 +26,8 @@ function App() {
               <Board 
 
                 currentPlayer = {currentPlayer}
-                onTurnEnd = {handleTurnChange}
+                onTurnEnd = {handleTurnChangeAndBoardState}
+                BOARD = {board}
               
               />
             </div>
