@@ -1,3 +1,9 @@
+export interface PieceState {
+    redCount: number;
+    blueCount: number;
+}
+
+
 export interface GameSystemProps {
     children: (props: {
         currentPlayer: string;

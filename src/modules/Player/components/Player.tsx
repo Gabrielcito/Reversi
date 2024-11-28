@@ -1,8 +1,16 @@
+import { useContext } from 'react';
 import '../styles/Player.css'
 import { PlayerProps } from '../types/Player';
+import { GameContext } from '../../GameSystem/components/Gamesystem';
+
 
 
 const Player: React.FC<PlayerProps> = ({ playerNumber, name, image, color, isCurrentPlayer }) => {
+
+    //@ts-ignore
+    const { redCount, blueCount } = useContext(GameContext);
+
+
     return (
       <div className={`player player-${playerNumber}`}>
         <img
@@ -12,9 +20,10 @@ const Player: React.FC<PlayerProps> = ({ playerNumber, name, image, color, isCur
           src={image} 
           alt={`Jugador ${playerNumber}`} 
         />
-        <p>{name || `Jugador ${playerNumber}`}<br/>{color}</p>
+        <p>{name || `Jugador ${playerNumber}`}</p>
+        <div id='circle' className={color}>{color === 'red' ? redCount : blueCount}</div>
       </div>
     );
-  };
+};
   
   export default Player;

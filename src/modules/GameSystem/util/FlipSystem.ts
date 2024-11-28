@@ -128,21 +128,21 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
     potencialFlip = [];
 
     //Diagonal inferior derecha
-    for(let i = 1; rowIndex + i >= 0 && colIndex + i < board[rowIndex].length; i++){
+    for (let i = 1; rowIndex + i < board.length && colIndex + i < board[rowIndex].length; i++) {
         const row = rowIndex + i;
         const col = colIndex + i;
-        
-        if(board[row][col] === opponentColor){
-            potencialFlip.push({row: row, col: col})
+
+        if (board[row][col] === opponentColor) {
+            potencialFlip.push({ row: row, col: col });
         }
 
-        if(board[row][col] === playerColor){
-            toFlip.push(...potencialFlip)
-            break
+        if (board[row][col] === playerColor) {
+            toFlip.push(...potencialFlip);
+            break;
         }
 
-        if(board[row][col] === null){
-            break
+        if (board[row][col] === null) {
+            break;
         }
     }
     potencialFlip = [];

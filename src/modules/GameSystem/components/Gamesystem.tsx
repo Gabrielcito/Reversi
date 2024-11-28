@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { GameSystemProps, BoardType } from '../types/Gamesystem';
+import { useState, createContext } from 'react';
+import { GameSystemProps, BoardType, PieceState } from '../types/Gamesystem';
 import { flipValidPieces } from '../util/FlipSystem';
+import usePieceCount from '../hooks/usePieceCount';
 
 const initialBoard: BoardType = Array(8)
     .fill(null)
@@ -18,12 +19,14 @@ const initialBoard: BoardType = Array(8)
         })
     );
 
+export const GameContext = createContext<PieceState | undefined>(undefined);
 
 const GameSystem: React.FC<GameSystemProps> = ({ children }) => {
 
     const [board, setBoard] = useState<BoardType>(initialBoard);
-    //const [lastMove, setLastMove] = useState<{ row: number; col: number }>({ row: 0, col: 0});
     const [currentPlayer, setCurrentPlayer] = useState<string>('Jugador 1');
+
+    const { redCount, blueCount } = usePieceCount(board)
 
     const handleTurnChangeAndBoardState = (rowIndex: number, colIndex: number) => {
 
@@ -41,7 +44,8 @@ const GameSystem: React.FC<GameSystemProps> = ({ children }) => {
     }
 
     return(
-        <>
+        <GameContext.Provider value={{redCount, blueCount}}>
+
             {children({ 
 
                 currentPlayer, 
@@ -49,7 +53,8 @@ const GameSystem: React.FC<GameSystemProps> = ({ children }) => {
                 board
 
             })}
-        </>
+
+        </GameContext.Provider>
     )
 }
 

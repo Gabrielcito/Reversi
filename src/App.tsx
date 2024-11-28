@@ -18,7 +18,7 @@ const App = () => {
                 playerNumber={1}
                 name="Jugador 1"
                 image={TUKI}
-                color="🔴"
+                color="red"
                 isCurrentPlayer={currentPlayer === 'Jugador 1'}
               />
             </div>
@@ -38,7 +38,7 @@ const App = () => {
                 playerNumber={2}
                 name="Jugador 2"
                 image={TUKI}
-                color="🔵"
+                color="blue"
                 isCurrentPlayer={currentPlayer === 'Jugador 2'}
               />
             </div>
