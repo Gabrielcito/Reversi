@@ -25,8 +25,7 @@ const GameSystem: React.FC<GameSystemProps> = ({ children }) => {
 
     const [board, setBoard] = useState<BoardType>(initialBoard);
     const [currentPlayer, setCurrentPlayer] = useState<string>('Jugador 1');
-
-    const { redCount, blueCount } = usePieceCount(board)
+    const [redCount, blueCount] = usePieceCount(board)
 
     const handleTurnChangeAndBoardState = (rowIndex: number, colIndex: number) => {
 

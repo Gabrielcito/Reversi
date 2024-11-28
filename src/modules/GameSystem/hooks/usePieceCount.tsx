@@ -13,8 +13,8 @@ const usePieceCount = (board: BoardType) => {
 
         board.forEach(row => {
             row.forEach(cell => {
-                if (cell === '0') red++;  // '0' representa rojo
-                if (cell === '1') blue++; // '1' representa azul
+                if (cell === '0') red++;  
+                if (cell === '1') blue++;
             });
         });
 
@@ -27,7 +27,7 @@ const usePieceCount = (board: BoardType) => {
         countPieces(board)
     }, [board])
 
-    return { redCount, blueCount }
+    return [redCount, blueCount]
 }
 
 export default usePieceCount
