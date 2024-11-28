@@ -16,13 +16,16 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
 
     const toFlip: {row: number, col: number}[] = [];
 
+    let potencialFlip: {row: number, col: number}[] = [];
+
     //Derecha
     for(let col = colIndex + 1; col < board[rowIndex].length - 1; col++){
         if(board[rowIndex][col] === opponentColor){
-            toFlip.push({row: rowIndex, col: col})
+            potencialFlip.push({row: rowIndex, col: col})
         }
 
         if(board[rowIndex][col] === playerColor){
+            toFlip.push(...potencialFlip)
             break;
         }
 
@@ -31,14 +34,16 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
             break
         }
     }
+    potencialFlip = [];
 
     //Izquierda
     for(let col = colIndex - 1; col > 0; col--){
         if(board[rowIndex][col] === opponentColor){
-            toFlip.push({row: rowIndex, col: col})
+            potencialFlip.push({row: rowIndex, col: col})
         }
 
         if(board[rowIndex][col] === playerColor){
+            toFlip.push(...potencialFlip)
             break;
         }
 
@@ -46,29 +51,16 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
             break
         }
     }
-
-    //Arriba
-    for(let row = rowIndex + 1; row < board.length; row++){
-        if(board[row][colIndex] === opponentColor){
-            toFlip.push({row: row, col: colIndex})
-        }
-
-        if(board[row][colIndex] === playerColor){
-            break
-        }
-
-        if(board[row][colIndex] === null){
-            break
-        }
-    }
+    potencialFlip = [];
 
     //Abajo
-    for(let row = rowIndex - 1; row > 0; row--){
+    for(let row = rowIndex + 1; row < board.length; row++){
         if(board[row][colIndex] === opponentColor){
-            toFlip.push({row: row, col: colIndex})
+            potencialFlip.push({row: row, col: colIndex})
         }
 
         if(board[row][colIndex] === playerColor){
+            toFlip.push(...potencialFlip)
             break
         }
 
@@ -76,6 +68,24 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
             break
         }
     }
+    potencialFlip = [];
+
+    //Arriba
+    for(let row = rowIndex - 1; row > 0; row--){
+        if(board[row][colIndex] === opponentColor){
+            potencialFlip.push({row: row, col: colIndex})
+        }
+
+        if(board[row][colIndex] === playerColor){
+            toFlip.push(...potencialFlip)
+            break
+        }
+
+        if(board[row][colIndex] === null){
+            break
+        }
+    }
+    potencialFlip = [];
 
     //Diagonal superior derecha
     for(let i = 1; rowIndex - i >= 0 && colIndex + i < board[rowIndex].length; i++){
@@ -83,10 +93,11 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
         const col = colIndex + i;
         
         if(board[row][col] === opponentColor){
-            toFlip.push({row: row, col: col})
+            potencialFlip.push({row: row, col: col})
         }
 
         if(board[row][col] === playerColor){
+            toFlip.push(...potencialFlip)
             break
         }
 
@@ -94,6 +105,7 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
             break
         }
     }
+    potencialFlip = [];
 
     //Diagonal superior izquierda
     for(let i = 1; rowIndex - i >= 0 && colIndex - i >= 0; i++){
@@ -101,10 +113,11 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
         const col = colIndex - i;
         
         if(board[row][col] === opponentColor){
-            toFlip.push({row: row, col: col})
+            potencialFlip.push({row: row, col: col})
         }
         
         if(board[row][col] === playerColor){
+            toFlip.push(...potencialFlip)
             break
         }
 
@@ -112,6 +125,7 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
             break
         }
     }
+    potencialFlip = [];
 
     //Diagonal inferior derecha
     for(let i = 1; rowIndex + i >= 0 && colIndex + i < board[rowIndex].length; i++){
@@ -119,10 +133,11 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
         const col = colIndex + i;
         
         if(board[row][col] === opponentColor){
-            toFlip.push({row: row, col: col})
+            potencialFlip.push({row: row, col: col})
         }
 
         if(board[row][col] === playerColor){
+            toFlip.push(...potencialFlip)
             break
         }
 
@@ -130,6 +145,7 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
             break
         }
     }
+    potencialFlip = [];
 
     //Diagonal inferior izquierda
     for(let i = 1; rowIndex + i < board.length && colIndex - i >= 0; i++){
@@ -137,10 +153,11 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
         const col = colIndex - i;
         
         if(board[row][col] === opponentColor){
-            toFlip.push({row: row, col: col})
+            potencialFlip.push({row: row, col: col})
         }
         
         if(board[row][col] === playerColor){
+            toFlip.push(...potencialFlip)
             break
         }
 
@@ -148,8 +165,7 @@ export const flipValidPieces = (board: BoardType, rowIndex: number, colIndex: nu
             break
         }
     }
-
-    console.log(toFlip)
+    potencialFlip = [];
 
     //Flip
     //TODO: Este tambien

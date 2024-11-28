@@ -1,6 +1,6 @@
 import '../styles/Gameboard.css'
 import { GameBoardProps } from '../types/Gameboard';
-import Buttonboard from '../components/Buttonboard'
+import Buttonboard from './Buttonboard'
 
 const Board: React.FC<GameBoardProps> = ({currentPlayer, BOARD, onTurnEnd}) => { 
 
