@@ -10,7 +10,7 @@ const App = () => {
 
     <GameSystem>
 
-      {({ currentPlayer, board, handleTurnChangeAndBoardState }) => (
+      {({ currentPlayer, board, handleTurnChangeAndBoardState, validMoves }) => (
           <div id="main-container">
 
             <div className="left">
@@ -29,6 +29,7 @@ const App = () => {
                 currentPlayer = {currentPlayer}
                 onTurnEnd = {handleTurnChangeAndBoardState}
                 BOARD = {board}
+                validMoves={validMoves}
               
               />
             </div>

@@ -2,7 +2,10 @@ import '../styles/Gameboard.css'
 import { GameBoardProps } from '../types/Gameboard';
 import Buttonboard from './Buttonboard'
 
-const Board: React.FC<GameBoardProps> = ({currentPlayer, BOARD, onTurnEnd}) => { 
+const Board: React.FC<GameBoardProps> = ({currentPlayer, BOARD, validMoves, onTurnEnd}) => { 
+
+  const isValidMove = (row: number, col: number) => validMoves.some(move => move.row === row && move.col === col);
+
 
   return (
     <>
@@ -20,6 +23,7 @@ const Board: React.FC<GameBoardProps> = ({currentPlayer, BOARD, onTurnEnd}) => {
                     color={color} 
                     row={rowIndex}
                     col={colIndex}
+                    highlight={isValidMove(rowIndex, colIndex)}
                     />
                 </li>
               ))}

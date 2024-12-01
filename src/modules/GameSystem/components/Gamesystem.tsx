@@ -1,7 +1,8 @@
 import { useState, createContext } from 'react';
 import { GameSystemProps, BoardType, PieceState } from '../types/Gamesystem';
 import { flipValidPieces } from '../util/FlipSystem';
-import usePieceCount from '../hooks/usePieceCount';
+import usePieceCount from '../hooks/usePieceCount.ts';
+import useValidMoves from '../hooks/useValidMove.ts';
 
 const initialBoard: BoardType = Array(8)
     .fill(null)
@@ -26,6 +27,7 @@ const GameSystem: React.FC<GameSystemProps> = ({ children }) => {
     const [board, setBoard] = useState<BoardType>(initialBoard);
     const [currentPlayer, setCurrentPlayer] = useState<string>('Jugador 1');
     const [redCount, blueCount] = usePieceCount(board)
+    const validMoves = useValidMoves(board, currentPlayer)
 
     const handleTurnChangeAndBoardState = (rowIndex: number, colIndex: number) => {
 
@@ -49,7 +51,8 @@ const GameSystem: React.FC<GameSystemProps> = ({ children }) => {
 
                 currentPlayer, 
                 handleTurnChangeAndBoardState,
-                board
+                board,
+                validMoves
 
             })}
 

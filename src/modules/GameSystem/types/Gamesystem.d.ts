@@ -9,6 +9,7 @@ export interface GameSystemProps {
         currentPlayer: string;
         handleTurnChangeAndBoardState: (rowIndex: number, colIndex: number) => void;
         board: BoardType;
+        validMoves: {col: number, row: number}[]
     }) => React.ReactNode;
 }
 
