@@ -18,7 +18,7 @@ const Player: React.FC<PlayerProps> = ({ playerNumber, name, image, color, isCur
             border: isCurrentPlayer ? '5px solid rgba(255, 255, 0, 0.8)' : 'none'
           }} 
           src={image} 
-          alt={`Jugador ${playerNumber}`} 
+          alt={`imagen del jugador ${playerNumber}`} 
         />
         <p>{name || `Jugador ${playerNumber}`}</p>
         <div id='circle' className={color}>{color === 'red' ? redCount : blueCount}</div>
