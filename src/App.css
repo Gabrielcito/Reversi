@@ -15,7 +15,6 @@
 #main-container {
   display: flex;
   justify-content: space-between; /* Asegura que las tres secciones se distribuyan */
-  align-items: center; /* Centra las secciones verticalmente */
   height: 100vh; /* Ocupa toda la altura de la pantalla */
   padding: 0 2rem; /* Añade algo de espacio lateral */
 }
